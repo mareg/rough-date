@@ -4,7 +4,7 @@
     "type": "library",
     "description": "Rough date object allowing dates like `Jan 2005` or `2006`",
     "autoload": {
-        "psr-0": { "": [ "src/" ], "spec": [ "" ] }
+        "psr-0": { "": [ "src/" ] }
     },
     "config": {
         "bin-dir": "bin"
@@ -13,8 +13,8 @@
         "php": ">=5.4"
     },
     "require-dev": {
-        "phpspec/phpspec": "~2.1.0@dev",
-        "bossa/phpspec2-expect": "dev-master",
-        "fabpot/php-cs-fixer": "~0.3@dev"
+        "phpspec/phpspec": "~2.1.0",
+        "bossa/phpspec2-expect": "~1.0.3",
+        "fabpot/php-cs-fixer": "~1.5"
     }
 }
