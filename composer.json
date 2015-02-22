@@ -1,6 +1,6 @@
 {
     "name": "mareg/rough-date",
-    "license": "MIT",
+    "license": "GNU GPL v3.0",
     "type": "library",
     "description": "Rough date object allowing dates like `Jan 2005` or `2006`",
     "autoload": {
