@@ -101,7 +101,7 @@ final class RoughDate
      *
      * @return string
      */
-    private function normalizeDateFromString($input)
+    private static function normalizeDateFromString($input)
     {
         if (preg_match('/^\d{4}[\-][0]{2}[\-][0]{2}$/', $input) || preg_match('/^\d{4}[\-]\d{2}[\-][0]{2}$/', $input)) {
             return $input;
