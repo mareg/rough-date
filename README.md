@@ -4,6 +4,19 @@ Needed to store a "rough date" in one of my project, may be useful for otheres.
 [![Build Status](https://scrutinizer-ci.com/g/mareg/rough-date/badges/build.png?b=master)](https://scrutinizer-ci.com/g/mareg/rough-date/build-status/master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mareg/rough-date/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mareg/rough-date/?branch=master)
 
+# Installation
+
+Execute from shell the following command:
+```bash
+$ composer require mareg/rough-date
+```
+Or add `"mareg/rough-date": "~0.1"` to your `composer.json`:
+```json
+    "require": {
+        "mareg/rough-date": "~0.1"
+    },
+```
+
 # Usage
 
 Create a `RoughDate` object from the string:
