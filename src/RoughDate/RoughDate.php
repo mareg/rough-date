@@ -28,7 +28,6 @@ final class RoughDate
      */
     public static function fromString($string)
     {
-        //echo ($string . " " . strtotime($string) . ' ' . (new \DateTime())->setTimestamp(strtotime($string))->format('Y-m-d') . "\n");
         return new RoughDate(self::normalizeDateFromString($string));
     }
 
