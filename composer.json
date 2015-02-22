@@ -4,7 +4,7 @@
     "type": "library",
     "description": "Rough date object allowing dates like `Jan 2005` or `2006`",
     "autoload": {
-        "psr-0": { "": [ "src/" ], "spec": [ "" ] }
+        "psr-0": { "": [ "src/" ] }
     },
     "config": {
         "bin-dir": "bin"
