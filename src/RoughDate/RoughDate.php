@@ -11,7 +11,7 @@
 
 namespace RoughDate;
 
-use RoughDate\Exception\UnrecognizedDateFormatException;
+use RoughDate\Exception\UnrecognizedDateFormat;
 
 final class RoughDate
 {
@@ -123,6 +123,6 @@ final class RoughDate
             return $input . '-00-00';
         }
 
-        throw new UnrecognizedDateFormatException($input);
+        throw new UnrecognizedDateFormat($input);
     }
 }
