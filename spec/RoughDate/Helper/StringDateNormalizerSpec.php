@@ -3,7 +3,6 @@
 namespace spec\RoughDate\Helper;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 use RoughDate\Exception\UnrecognizedDateFormat;
 
 class StringDateNormalizerSpec extends ObjectBehavior
