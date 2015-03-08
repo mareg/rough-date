@@ -3,7 +3,7 @@
 namespace spec\RoughDate;
 
 use PhpSpec\ObjectBehavior;
-use RoughDate\Exception\UnrecognizedDateFormatException;
+use RoughDate\Exception\UnrecognizedDateFormat;
 
 class RoughDateSpec extends ObjectBehavior
 {
@@ -47,7 +47,7 @@ class RoughDateSpec extends ObjectBehavior
 
     function it_throws_exception_when_date_string_format_is_not_recognised()
     {
-        $this->shouldThrow(new UnrecognizedDateFormatException('test'))->during('fromString', ['test']);
+        $this->shouldThrow(new UnrecognizedDateFormat('test'))->during('fromString', ['test']);
     }
 
     function it_converts_jMY_string_into_a_correct_format()

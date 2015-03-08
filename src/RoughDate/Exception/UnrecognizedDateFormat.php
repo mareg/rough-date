@@ -11,8 +11,11 @@
 
 namespace RoughDate\Exception;
 
-class UnrecognizedDateFormatException extends \Exception
+class UnrecognizedDateFormat extends \Exception
 {
+    /**
+     * @param string $format
+     */
     public function __construct($format)
     {
         parent::__construct("Failed to recognize date format of `{$format}`.", 500);
