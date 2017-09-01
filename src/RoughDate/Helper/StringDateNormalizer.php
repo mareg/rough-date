@@ -28,11 +28,11 @@ class StringDateNormalizer
         }
 
         if (preg_match('/^[a-zA-Z]{3} \d{4}$/', $input)) {
-            return (new \DateTime($input))->format('Y-m') . '-00';
+            return (new \DateTime($input))->format('Y-m').'-00';
         }
 
         if (preg_match('/^\d{4}$/', $input)) {
-            return $input . '-00-00';
+            return $input.'-00-00';
         }
 
         throw new UnrecognizedDateFormat($input);
