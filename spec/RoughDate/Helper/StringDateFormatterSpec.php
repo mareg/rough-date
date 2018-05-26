@@ -1,10 +1,9 @@
 <?php
 
-namespace spec\RoughDate\Helper;
+namespace spec\Mareg\RoughDate\Helper;
 
+use Mareg\RoughDate\Exception\UnrecognizedDateFormat;
 use PhpSpec\ObjectBehavior;
-use RoughDate\RoughDate;
-use RoughDate\Exception\UnrecognizedDateFormat;
 
 class StringDateFormatterSpec extends ObjectBehavior
 {

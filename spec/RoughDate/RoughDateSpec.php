@@ -1,9 +1,9 @@
 <?php
 
-namespace spec\RoughDate;
+namespace spec\Mareg\RoughDate;
 
+use Mareg\RoughDate\Exception\UnrecognizedDateFormat;
 use PhpSpec\ObjectBehavior;
-use RoughDate\Exception\UnrecognizedDateFormat;
 
 class RoughDateSpec extends ObjectBehavior
 {

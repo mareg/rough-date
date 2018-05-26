@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace RoughDate\Helper;
+namespace Mareg\RoughDate\Helper;
 
-use RoughDate\RoughDate;
-use RoughDate\Exception\UnrecognizedDateFormat;
+use Mareg\RoughDate\RoughDate;
+use Mareg\RoughDate\Exception\UnrecognizedDateFormat;
 
 final class StringDateFormatter
 {

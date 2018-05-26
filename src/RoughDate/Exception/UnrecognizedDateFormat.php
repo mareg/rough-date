@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace RoughDate\Exception;
+namespace Mareg\RoughDate\Exception;
 
 class UnrecognizedDateFormat extends \RuntimeException
 {
