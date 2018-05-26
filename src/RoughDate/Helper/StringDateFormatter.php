@@ -1,11 +1,22 @@
 <?php
 
+/*
+ * This file is part of RoughDate library.
+ *
+ * (c) Marek Matulka <marek@matulka.net>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
+
 namespace RoughDate\Helper;
 
 use RoughDate\RoughDate;
 use RoughDate\Exception\UnrecognizedDateFormat;
 
-class StringDateFormatter
+final class StringDateFormatter
 {
     /**
      * @var string
@@ -17,9 +28,11 @@ class StringDateFormatter
     /**
      * @param string $date
      *
+     * @throws UnrecognizedDateFormat
+     *
      * @return StringDateFormatter
      */
-    public static function fromString($date)
+    public static function fromString(string $date): StringDateFormatter
     {
         self::validateDateFormat($date);
 
@@ -34,7 +47,7 @@ class StringDateFormatter
      *
      * @return string
      */
-    public function format($format = RoughDate::DEFAULT_DATE_FORMAT)
+    public function format(string $format = RoughDate::DEFAULT_DATE_FORMAT): string
     {
         if ($format != RoughDate::DEFAULT_DATE_FORMAT) {
             return $this->formatDateToString($format);
@@ -48,7 +61,7 @@ class StringDateFormatter
      *
      * @return string
      */
-    private function formatDateToString($format)
+    private function formatDateToString(string $format): string
     {
         $dateParts = explode('-', $this->date);
 
@@ -70,7 +83,7 @@ class StringDateFormatter
      *
      * @throws UnrecognizedDateFormat
      */
-    private static function validateDateFormat($date)
+    private static function validateDateFormat(string $date)
     {
         if (!preg_match('/^\d{4}[\-|\/]\d{2}[\-|\/]\d{2}$/', $date)) {
             throw new UnrecognizedDateFormat($date);
