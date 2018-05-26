@@ -9,15 +9,17 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace RoughDate\Exception;
 
-class UnrecognizedDateFormat extends \Exception
+class UnrecognizedDateFormat extends \RuntimeException
 {
     /**
      * @param string $format
      */
-    public function __construct($format)
+    public function __construct(string $format)
     {
-        parent::__construct("Failed to recognize date format of `{$format}`.", 500);
+        parent::__construct("Failed to recognize date format of `{$format}`.");
     }
 }

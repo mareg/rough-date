@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace RoughDate;
 
 use RoughDate\Helper\StringDateNormalizer;
@@ -26,7 +28,7 @@ final class RoughDate
     /**
      * @param string $dateString
      */
-    private function __construct($dateString)
+    private function __construct(string $dateString)
     {
         $this->date = $dateString;
     }
@@ -36,7 +38,7 @@ final class RoughDate
      *
      * @return RoughDate
      */
-    public static function fromString($string)
+    public static function fromString(string $string): RoughDate
     {
         $noramlizer = new StringDateNormalizer();
 
@@ -48,7 +50,7 @@ final class RoughDate
      *
      * @return RoughDate
      */
-    public static function fromDateTime(\DateTimeInterface $dateTime)
+    public static function fromDateTime(\DateTimeInterface $dateTime): RoughDate
     {
         return new RoughDate($dateTime->format(self::DEFAULT_DATE_FORMAT));
     }
@@ -56,7 +58,7 @@ final class RoughDate
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->format();
     }
@@ -64,9 +66,9 @@ final class RoughDate
     /**
      * @param string $format
      *
-     * @return
+     * @return string
      */
-    public function format($format = self::DEFAULT_DATE_FORMAT)
+    public function format(string $format = self::DEFAULT_DATE_FORMAT): string
     {
         $formatter = StringDateFormatter::fromString($this->date);
 
