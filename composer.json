@@ -1,10 +1,10 @@
 {
     "name": "mareg/rough-date",
-    "license": "GNU GPL v3.0",
+    "license": "GPL-3.0-only",
     "type": "library",
     "description": "Rough date object allowing dates like `Jan 2005` or `2006`",
     "autoload": {
-        "psr-0": { "": [ "src/" ] }
+        "psr-4": { "RoughDate\\": [ "src/RoughDate/" ] }
     },
     "config": {
         "bin-dir": "bin"
