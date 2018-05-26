@@ -10,10 +10,10 @@ Execute from shell the following command:
 ```bash
 $ composer require mareg/rough-date
 ```
-Or add `"mareg/rough-date": "~0.1"` to your `composer.json`:
+Or add `"mareg/rough-date": "^1.0"` to your `composer.json`:
 ```json
     "require": {
-        "mareg/rough-date": "~0.1"
+        "mareg/rough-date": "^1.0"
     },
 ```
 
