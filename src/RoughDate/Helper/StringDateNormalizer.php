@@ -11,9 +11,9 @@
 
 declare(strict_types=1);
 
-namespace RoughDate\Helper;
+namespace Mareg\RoughDate\Helper;
 
-use RoughDate\Exception\UnrecognizedDateFormat;
+use Mareg\RoughDate\Exception\UnrecognizedDateFormat;
 
 final class StringDateNormalizer
 {

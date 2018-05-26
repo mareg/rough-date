@@ -1,1 +1,6 @@
+suites:
+    default:
+        namespace: Mareg
+        psr4_prefix: Mareg
+
 formatter.name: pretty
