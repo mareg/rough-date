@@ -38,6 +38,10 @@ final class StringDateNormalizer
             return str_replace('.', '-', $input);
         }
 
+        if (preg_match('/^\d{4}[\-|\/|\.]\d{2}$/', $input)) {
+            return str_replace('/', '-', str_replace('.', '-', $input)) . '-00';
+        }
+
         if (preg_match('/^[a-zA-Z]{3} \d{4}$/', $input)) {
             return (new \DateTime($input))->format('Y-m') . '-00';
         }
