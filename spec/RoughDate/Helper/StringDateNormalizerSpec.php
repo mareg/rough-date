@@ -52,4 +52,19 @@ class StringDateNormalizerSpec extends ObjectBehavior
     {
         $this->normalize('1993-10-00')->shouldReturn('1993-10-00');
     }
+
+    function it_converts_Ym_string_with_dash_into_a_correct_format()
+    {
+        $this->normalize('1993-10')->shouldReturn('1993-10-00');
+    }
+
+    function it_converts_Ym_string_with_slash_into_a_correct_format()
+    {
+        $this->normalize('1993/10')->shouldReturn('1993-10-00');
+    }
+
+    function it_converts_Ym_string_with_dot_into_a_correct_format()
+    {
+        $this->normalize('1993.10')->shouldReturn('1993-10-00');
+    }
 }
