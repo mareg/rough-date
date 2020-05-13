@@ -10,9 +10,9 @@
         "bin-dir": "bin"
     },
     "require": {
-        "php": ">=7.2"
+        "php": "^7.2, <7.5"
     },
     "require-dev": {
-        "phpspec/phpspec": "^4.3"
+        "phpspec/phpspec": "^6.1.1"
     }
 }
