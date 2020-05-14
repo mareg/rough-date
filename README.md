@@ -1,6 +1,7 @@
 # Rough Date
 Needed to store a "rough date" in one of my project, may be useful for otheres.
 
+![CI](https://github.com/mareg/rough-date/workflows/CI/badge.svg?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/mareg/rough-date/badges/build.png?b=master)](https://scrutinizer-ci.com/g/mareg/rough-date/build-status/master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mareg/rough-date/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mareg/rough-date/?branch=master)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
