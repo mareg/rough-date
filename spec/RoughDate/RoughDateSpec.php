@@ -189,4 +189,16 @@ class RoughDateSpec extends ObjectBehavior
 
         $this->format('j F Y')->shouldReturn($today->format('j F Y'));
     }
+
+    function it_is_JsonSeriazable()
+    {
+        $this->shouldBeAnInstanceOf(\JsonSerializable::class);
+    }
+
+    function it_returns_date_string_when_serialised()
+    {
+        $today = new \DateTime('today');
+
+        $this->jsonSerialize()->shouldReturn($today->format('Y-m-d'));
+    }
 }
