@@ -16,7 +16,7 @@ namespace Mareg\RoughDate;
 use Mareg\RoughDate\Helper\StringDateNormalizer;
 use Mareg\RoughDate\Helper\StringDateFormatter;
 
-final class RoughDate
+final class RoughDate implements \JsonSerializable
 {
     const DEFAULT_DATE_FORMAT = 'Y-m-d';
 
@@ -73,5 +73,13 @@ final class RoughDate
         $formatter = StringDateFormatter::fromString($this->date);
 
         return $formatter->format($format);
+    }
+
+    /**
+     * @return string
+     */
+    public function jsonSerialize(): string
+    {
+        return $this->format();
     }
 }
