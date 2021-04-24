@@ -42,7 +42,7 @@ final class StringDateNormalizer
             return str_replace('/', '-', str_replace('.', '-', $input)) . '-00';
         }
 
-        if (preg_match('/^[a-zA-Z]{3} \d{4}$/', $input)) {
+        if (preg_match('/^[A-Z][a-z]* \d{4}$/', $input)) {
             return (new \DateTime($input))->format('Y-m') . '-00';
         }
 
