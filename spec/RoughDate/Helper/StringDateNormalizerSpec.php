@@ -23,6 +23,11 @@ class StringDateNormalizerSpec extends ObjectBehavior
         $this->normalize('8 Mar 1993')->shouldReturn('1993-03-08');
     }
 
+    function it_converts_MjY_string_into_a_correct_format()
+    {
+        $this->normalize('Mar 8, 1993')->shouldReturn('1993-03-08');
+    }
+
     function it_converts_MY_string_into_a_correct_format()
     {
         $this->normalize('Mar 1993')->shouldReturn('1993-03-00');
@@ -36,6 +41,12 @@ class StringDateNormalizerSpec extends ObjectBehavior
     function it_converts_jFY_string_into_a_correct_format()
     {
         $this->normalize('1 March 1993')->shouldReturn('1993-03-01');
+        $this->normalize('1. March 1993')->shouldReturn('1993-03-01');
+    }
+
+    function it_converts_FjY_string_into_a_correct_format()
+    {
+        $this->normalize('March 1, 1993')->shouldReturn('1993-03-01');
     }
 
     function it_converts_Y_string_into_a_correct_format()
