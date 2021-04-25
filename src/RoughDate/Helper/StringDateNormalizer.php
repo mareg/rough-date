@@ -30,7 +30,10 @@ final class StringDateNormalizer
             return $input;
         }
 
-        if (preg_match('/^\d{4}[\-|\/]\d{2}[\-|\/]\d{2}$/', $input) || preg_match('/^\d{1,2}\.? [a-zA-Z]{3} \d{4}$/', $input)) {
+        if (preg_match('/^\d{4}[\-|\/]\d{2}[\-|\/]\d{2}$/', $input) ||
+            preg_match('/^\d{1,2}\.? [a-zA-Z]{3,} \d{4}$/', $input) ||
+            preg_match('/^[a-zA-Z]{3,} \d{1,2}, \d{4}$/', $input)
+        ) {
             return (new \DateTime($input))->format('Y-m-d');
         }
 
