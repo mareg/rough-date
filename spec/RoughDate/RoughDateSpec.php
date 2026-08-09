@@ -190,6 +190,34 @@ class RoughDateSpec extends ObjectBehavior
         $this->format('j F Y')->shouldReturn($today->format('j F Y'));
     }
 
+    function it_rejects_impossible_calendar_dates()
+    {
+        $this->beConstructedThrough('fromString', ['2015-02-30']);
+
+        $this->shouldThrow(new UnrecognizedDateFormat('2015-02-30'))->duringInstantiation();
+    }
+
+    function it_rejects_a_known_day_inside_an_unknown_month()
+    {
+        $this->beConstructedThrough('fromString', ['1993-00-15']);
+
+        $this->shouldThrow(new UnrecognizedDateFormat('1993-00-15'))->duringInstantiation();
+    }
+
+    function it_throws_unrecognized_date_format_rather_than_a_DateTime_exception()
+    {
+        $this->beConstructedThrough('fromString', ['99 Foo 1993']);
+
+        $this->shouldThrow(new UnrecognizedDateFormat('99 Foo 1993'))->duringInstantiation();
+    }
+
+    function it_keeps_escaped_literals_when_precision_is_reduced()
+    {
+        $this->beConstructedThrough('fromString', ['1993']);
+
+        $this->format('\Y\e\a\r Y')->shouldReturn('Year 1993');
+    }
+
     function it_is_JsonSeriazable()
     {
         $this->shouldBeAnInstanceOf(\JsonSerializable::class);
