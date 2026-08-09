@@ -18,6 +18,10 @@ use Mareg\RoughDate\Exception\UnrecognizedDateFormat;
 
 final class StringDateFormatter
 {
+    const UNKNOWN = '00';
+    const YEAR_PRECISION_CHARS = 'LYy';
+    const MONTH_PRECISION_CHARS = 'FmMntLYy';
+
     /**
      * @var string
      */
@@ -63,19 +67,65 @@ final class StringDateFormatter
      */
     private function formatDateToString(string $format): string
     {
-        $dateParts = explode('-', $this->date);
+        list($year, $month, $day) = explode('-', $this->date);
 
-        if ('00' === $dateParts[1] && '00' === $dateParts[2]) {
-            $date = \DateTime::createFromFormat('Y', $dateParts[0]);
-            $format = preg_replace('/[^L|^Y|^y|^ |^\.|^\,]/', '', $format);
-        } elseif ('00' === $dateParts[2]) {
-            $date = \DateTime::createFromFormat('Y-m', join('-', array_slice($dateParts, 0, 2)));
-            $format = preg_replace('/[^F|^m|^M|^n|^t|^L|^Y|^y|^ |^\.|^\,]/', '', $format);
+        if (self::UNKNOWN === $month) {
+            $date = $this->createDate($year, '01', '01');
+            $format = $this->stripUnsupported($format, self::YEAR_PRECISION_CHARS);
+        } elseif (self::UNKNOWN === $day) {
+            $date = $this->createDate($year, $month, '01');
+            $format = $this->stripUnsupported($format, self::MONTH_PRECISION_CHARS);
         } else {
-            $date = \DateTime::createFromFormat(RoughDate::DEFAULT_DATE_FORMAT, $this->date);
+            $date = $this->createDate($year, $month, $day);
         }
 
         return $date->format($format);
+    }
+
+    /**
+     * @param string $year
+     * @param string $month
+     * @param string $day
+     *
+     * @return \DateTime
+     */
+    private function createDate(string $year, string $month, string $day): \DateTime
+    {
+        return \DateTime::createFromFormat('!Y-m-d', $year . '-' . $month . '-' . $day);
+    }
+
+    /**
+     * @param string $format
+     * @param string $allowed
+     *
+     * @return string
+     */
+    private function stripUnsupported(string $format, string $allowed): string
+    {
+        $result = '';
+        $length = strlen($format);
+
+        for ($position = 0; $position < $length; $position++) {
+            $character = $format[$position];
+
+            if ('\\' === $character) {
+                $result .= $character;
+
+                if (++$position < $length) {
+                    $result .= $format[$position];
+                }
+
+                continue;
+            }
+
+            if (ctype_alpha($character) && false === strpos($allowed, $character)) {
+                continue;
+            }
+
+            $result .= $character;
+        }
+
+        return $result;
     }
 
     /**
@@ -85,7 +135,7 @@ final class StringDateFormatter
      */
     private static function validateDateFormat(string $date)
     {
-        if (!preg_match('/^\d{4}[\-|\/]\d{2}[\-|\/]\d{2}$/', $date)) {
+        if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $date)) {
             throw new UnrecognizedDateFormat($date);
         }
     }

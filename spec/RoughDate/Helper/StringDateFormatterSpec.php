@@ -105,4 +105,40 @@ class StringDateFormatterSpec extends ObjectBehavior
 
         $this->format('j F Y')->shouldReturn($today->format('j F Y'));
     }
+
+    function it_only_accepts_the_canonical_dashed_form()
+    {
+        $this->shouldThrow(new UnrecognizedDateFormat('1993/09/05'))->during('fromString', ['1993/09/05']);
+        $this->shouldThrow(new UnrecognizedDateFormat('1993|09|05'))->during('fromString', ['1993|09|05']);
+    }
+
+    function it_rebuilds_a_month_precision_date_on_the_first_of_the_month()
+    {
+        $this->beConstructedThrough('fromString', ['1993-02-00']);
+
+        $this->format('t')->shouldReturn('28');
+        $this->format('M Y')->shouldReturn('Feb 1993');
+    }
+
+    function it_rebuilds_a_year_precision_date_on_the_first_of_january()
+    {
+        $this->beConstructedThrough('fromString', ['1993-00-00']);
+
+        $this->format('Y')->shouldReturn('1993');
+        $this->format('L')->shouldReturn('0');
+    }
+
+    function it_keeps_escaped_literals_when_precision_is_reduced()
+    {
+        $this->beConstructedThrough('fromString', ['1993-00-00']);
+
+        $this->format('\Y\e\a\r Y')->shouldReturn('Year 1993');
+    }
+
+    function it_keeps_punctuation_literals_when_precision_is_reduced()
+    {
+        $this->beConstructedThrough('fromString', ['1993-10-00']);
+
+        $this->format('j|M^Y')->shouldReturn('|Oct^1993');
+    }
 }
